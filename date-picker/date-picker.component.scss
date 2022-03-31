@@ -1,0 +1,106 @@
+@import "variables";
+@import "mixins";
+
+.date-picker {
+  display: inline-block;
+  position: relative;
+  &.opened &__container {
+    display: flex;
+  }
+  &.not-empty &__reset-button {
+    display: inline-block;
+    color: var(--default-text-color);
+    font-size: 11px;
+  }
+  &.not-empty &__control {
+    background-color: var(--not-empty-control-color);
+    &::after {
+      display: none;
+    }
+  }
+  &__reset-button {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 30%;
+  }
+  &__container {
+    min-width: 711px;
+    height: 375px;
+    background-color: var(--dropdown-body-color);
+    border-radius: 4px;
+    padding: 24px 36px;
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+    position: absolute;
+    top: 40px;
+    z-index: 10;
+  }
+  &__body {
+    display: flex;
+  }
+  &__calendar {
+    margin-right: 46px;
+  }
+  &__date {
+    display: block;
+    color: var(--default-text-color);
+    transition: color linear .1s;
+    white-space: nowrap;
+    &:hover {
+      color: var(--primary-color);
+    }
+    & + & {
+      margin-top: 1rem;
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__days-count {
+    color: var(--gray-200)
+  }
+  &__button-outer {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  &.opened &__control::after {
+    top: 42%;
+    transform: rotate(-225deg);
+  }
+  &__control {
+    padding: 9px 30px 9px 22px;
+    @include rmax($xxl) {
+      padding: 8.5px 30px 8.5px 22px;
+    }
+    color: var(--default-text-color);
+    background-color: var(--dropdown-color);
+    border: 1px solid var(--dropdown-color);
+    border-radius: 4px;
+    position: relative;
+    cursor: default;
+    &::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      position: absolute;
+      border: 1px solid;
+      border-color: transparent transparent var(--default-text-color) var(--default-text-color);
+      border-radius: 0 0 0 2px;
+      right: 16px;
+      top: 32%;
+      transform: rotate(-45deg);
+    }
+  }
+  &.not-empty &__period {
+    display: inline;
+  }
+  &__period {
+    display: none;
+    color: var(--gray-color-1);
+    margin-left: .4rem;
+  }
+}

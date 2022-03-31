@@ -1,0 +1,65 @@
+@import "src/app/shared/styles/variables";
+
+$arrow-size: 12px;
+
+%arrow {
+  display: block;
+  width: $arrow-size;
+  height: $arrow-size;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $lic-primary-color $lic-primary-color transparent transparent;
+  border-radius: 0 4px 0 0;
+  &:disabled {
+    border-color: #fff #fff transparent transparent;
+    opacity: .3;
+  }
+}
+
+.date-picker-header {
+  width: 223px;
+  display: flex;
+  justify-content: space-between;
+  &__previous {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    &::before {
+      @extend %arrow;
+      content: "";
+      transform: rotate(-135deg);
+    }
+  }
+  &__selects {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    &::before {
+      @extend %arrow;
+      content: "";
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.select {
+  display: inline-block;
+  padding: 3px 3px 3px 10px;
+  background-color: var(--dropdown-color);
+  color: var(--default-text-color);
+  font-size: 14px;
+  border-radius: 3px;
+  position: relative;
+  & + & {
+    margin-left: 10px;
+  }
+}

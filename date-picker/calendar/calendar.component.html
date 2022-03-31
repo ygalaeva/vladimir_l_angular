@@ -1,0 +1,9 @@
+<div class="calendar">
+  <mat-calendar
+    (selectedChange)="changeSelectedDate($event)"
+    [headerComponent]="customHeader"
+    [selected]="activeDate"
+    [maxDate]="maxDate"
+    [minDate]="minDate"
+  ></mat-calendar>
+</div>

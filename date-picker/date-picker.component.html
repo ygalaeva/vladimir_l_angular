@@ -1,0 +1,35 @@
+<div class="date-picker" [class.opened]="opened" [class.not-empty]="!!period">
+  <button class="date-picker__control text-t2" (click)="opened = !opened">
+    <ng-container i18n="@@period">Period</ng-container><span class="date-picker__period">{{period}}</span>
+    <button class="date-picker__reset-button" (click)="reset($event)">
+      <i class="fas fa-times"></i>
+    </button>
+  </button>
+  <div class="date-picker__container">
+    <div class="date-picker__body">
+      <div class="date-picker__calendar">
+        <app-calendar [selected]="selectedFrom" (dateSelect)="selectedFrom = $event"></app-calendar>
+      </div>
+      <div class="date-picker__calendar">
+        <app-calendar [selected]="selectedTo" (dateSelect)="selectedTo = $event"></app-calendar>
+      </div>
+      <div class="date-picker__defined-dates">
+        <button
+          i18n="@@date-picker:defined-date"
+          *ngFor="let date of definedDates"
+          class="date-picker__date"
+          (click)="selectDefinedDate(date)"
+        >{date, select,}</button>
+      </div>
+    </div>
+    <div class="date-picker__footer">
+      <span class="date-picker__days-count">Selected: 7 days</span>
+      <div class="date-picker__actions">
+        <c2m-button i18n="@@reset" variant="tertiary" (click)="reset()">Reset</c2m-button>
+        <div class="date-picker__button-outer">
+          <c2m-button i18n="@@apply" (click)="apply()">Apply</c2m-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

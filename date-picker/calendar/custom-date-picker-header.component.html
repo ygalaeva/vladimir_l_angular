@@ -1,0 +1,24 @@
+<div class="date-picker-header">
+  <button class="date-picker-header__previous" (click)="previousClick()"></button>
+  <div class="date-picker-header__selects">
+    <select class="select" #monthSelectRef (input)="changeMonth(monthSelectRef.value)">
+      <option
+        *ngFor="let month of months"
+        [value]="month.id"
+        [defaultSelected]="month.id === calendar.activeDate.month"
+      >
+        {{month.name}}
+      </option>
+    </select>
+    <select class="select" #yearSelectRef (input)="changeYear(yearSelectRef.value)">
+      <option
+        *ngFor="let year of years"
+        [value]="year"
+        [defaultSelected]="year === calendar.activeDate.year"
+      >
+        {{year}}
+      </option>
+    </select>
+  </div>
+  <button class="date-picker-header__next" (click)="nextClick()"></button>
+</div>
